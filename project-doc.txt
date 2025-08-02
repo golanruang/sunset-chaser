@@ -1,0 +1,58 @@
+Sunset chaser is an app made to notify users when there will be a nice sunset in the area using weather forecast data. 
+
+Using weather data, sunset chaser will predict how nice a sunset will be for a user in a given area. Then, if the user has notifications turned on, 
+the app will notify a user that there is predicted to be a nice sunset. 
+
+
+### Priority 0 (MVP) Features
+
+- **Location Input**: Users can input and save their location for sunset predictions
+- **Sunset Probability**: Given a user's location, the app returns the day's probability of having a nice sunset
+- **Smart Notifications**: 1 hour before sunset, if particularly nice sunset attributes are identified, users receive a notification
+
+### Future Features (Priority 1+)
+
+- **Sunset Quality Scoring**: Numerical rating system (1-10) for sunset quality
+- **Weather Integration**: Real-time weather data from reliable APIs
+- **User Preferences**: Customizable notification timing and sunset quality thresholds
+- **Sunset Gallery**: Users can share and view photos of predicted vs actual sunsets
+- **Multiple Locations**: Save and monitor multiple favorite sunset viewing spots
+- **Sunrise Alerts**: Extend functionality to include sunrise predictions
+
+### Technical Stack Considerations
+- **Frontend**: React Native
+- **Backend**: Golang Gin 
+- **Database**: Supabase 
+- **Notifications**: Chrome extension notifications
+- **Location Services**: GPS integration and geocoding
+
+## User Experience Flow
+1. User opens app and inputs their location
+2. App displays current day's sunset probability and time
+3. 1 hour before sunset, if conditions are favorable, user receives notification
+4. User can view detailed weather conditions contributing to the prediction
+
+## Success Metrics
+- User engagement: Daily active users checking sunset predictions
+- User retention: Users who continue using the app over time
+
+## Database Schema (SQL)
+- User table: Stores a user's email, password, location, timezone, created_at, last_login
+    - User id 
+    - User email 
+    - User password 
+    - User location 
+
+- User preferences: Stores a user's preferences 
+    - User id 
+    - Notification enabled 
+    - Notification timing (p1)
+    - Quality threshold (p1)
+
+- Sunset predictions: 
+    - Prediction id 
+    - User id 
+    - Date 
+    - Quality rating 
+    - Weather conditions 
+    - Timestamp 
