@@ -1,5 +1,7 @@
 package types
 
+import "time"
+
 type WeatherData struct {
 	CloudCover     float64 `json:"cloud_cover"`      // Total cloud cover % (0–100)
 	HighCloudCover float64 `json:"high_cloud_cover"` // High-level clouds (e.g., cirrus)
@@ -14,7 +16,8 @@ type WeatherData struct {
 }
 
 type PredictionRequest struct {
-	UserID    int     `json:"user_id"`
-	Latitude  float64 `json:"latitude"`
-	Longitude float64 `json:"longitude"`
+	UserID     int       `json:"user_id"`
+	Latitude   float64   `json:"latitude"`
+	Longitude  float64   `json:"longitude"`
+	SunsetTime time.Time `json:"sunset_time"` // Sunset time in UTC
 }

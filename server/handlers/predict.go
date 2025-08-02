@@ -3,6 +3,7 @@ package handlers
 import (
 	"net/http"
 	"sunset-chaser/types"
+	"time"
 
 	"github.com/gin-gonic/gin"
 )
@@ -17,7 +18,7 @@ func HandleSunsetPrediction(c *gin.Context) {
 		return
 	}
 
-	weatherData, err := getCurrentWeather(request.Latitude, request.Longitude)
+	weatherData, err := getWeatherData(request.Latitude, request.Longitude, request.SunsetTime)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": "Failed to retrieve weather data",
@@ -34,18 +35,18 @@ func HandleSunsetPrediction(c *gin.Context) {
 	})
 }
 
-func getCurrentWeather(latitude, longitude float64) (types.WeatherData, error) {
+func getWeatherData(latitude float64, longitude float64, sunsetTime time.Time) (types.WeatherData, error) {
+
 	return types.WeatherData{
 		CloudCover:  0.3,
 		Humidity:    65.0,
 		WindSpeed:   8.0,
 		Visibility:  10.0,
 		Temperature: 72.0,
-		Description: "Partly cloudy",
 	}, nil
 }
 
 func calculateSunsetScore(weather types.WeatherData) float64 {
-	score := 0
+	score := 0.0
 	return score
 }
